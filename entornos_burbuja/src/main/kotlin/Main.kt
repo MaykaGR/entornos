@@ -1,7 +1,5 @@
 fun menorMayor(lista:MutableList<Int>, cant:Int): MutableList<Int>{
-    var i = 1
-    var listaOrdenada = mutableListOf<Int>()
-    listaOrdenada = lista
+    val listaOrdenada = lista
     repeat (cant){
         var j = 0
         var j2= 1
@@ -19,9 +17,7 @@ fun menorMayor(lista:MutableList<Int>, cant:Int): MutableList<Int>{
 }
 
 fun mayorMenor(lista:MutableList<Int>, cant:Int): MutableList<Int>{
-    var i = 1
-    var listaOrdenada = mutableListOf<Int>()
-    listaOrdenada = lista
+    val listaOrdenada = lista
     repeat (cant){
         var j = 0
         var j2= 1
