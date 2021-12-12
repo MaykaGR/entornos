@@ -1,53 +1,52 @@
-fun ordenarMayor(listNum: ArrayList<Int>, cant: Int) {
-    var tmp = 0
-    for(x in 0 until cant) {
-        for(y in 0 until cant) {
-            if(listNum[x] > listNum[y]) {
-                tmp = listNum[x]
-                listNum[x] = listNum[y]
-                listNum[y] = tmp
-            }
+fun menorMayor(lista:MutableList<Int>, cant:Int): MutableList<Int>{
+    var i = 1
+    var listaOrdenada = mutableListOf<Int>()
+    listaOrdenada = lista
+    repeat (cant){
+        var j = 0
+        var j2= 1
+        repeat(cant-1){
+            var temporal: Int
+        if(listaOrdenada[j]>listaOrdenada[j2]){
+            temporal=listaOrdenada[j]
+            listaOrdenada[j]=listaOrdenada[j2]
+            listaOrdenada[j2]=temporal
         }
+        j= j+1
+        j2=j2+1}
     }
-    println("\nArray ordenado: $listNum")
+    return listaOrdenada
 }
-fun ordenarMenor(listNum: ArrayList<Int>, cant: Int) {
-    var tmp = 0
-    for(x in 0 until cant) {
-        for(y in 0 until cant) {
-            if(listNum[x] < listNum[y]) {
-                tmp = listNum[y]
-                listNum[y] = listNum[x]
-                listNum[x] = tmp
+
+fun mayorMenor(lista:MutableList<Int>, cant:Int): MutableList<Int>{
+    var i = 1
+    var listaOrdenada = mutableListOf<Int>()
+    listaOrdenada = lista
+    repeat (cant){
+        var j = 0
+        var j2= 1
+        repeat(cant-1){
+            var temporal: Int
+            if(listaOrdenada[j]<listaOrdenada[j2]){
+                temporal=listaOrdenada[j]
+                listaOrdenada[j]=listaOrdenada[j2]
+                listaOrdenada[j2]=temporal
             }
-        }
+            j= j+1
+            j2=j2+1}
     }
-    println("\nArray ordenado: $listNum")
+    return listaOrdenada
 }
-fun main(Args: Array<String>) {
-    val listNum = arrayListOf<Int>()
-    var cant: Int
-    var opt: Int
-    var valor: Int
-    print("¿Cuantos valores desea ingresar?: ")
-    cant = readLine()!!.toInt()
-    for(v in 1..cant) {
-        print("Ingrese el valor #$v: ")
-        valor = readLine()!!.toInt()
-        listNum.add(valor)
+fun main() {
+var cant: Int?
+println("Cantidad de valores a introducir: ")
+    cant = readLine()?.toInt()?: 0
+    var lista = mutableListOf<Int>()
+    for (i in 0..cant-1){
+        println("Introduce valor: ")
+        lista.add(readLine()?.toInt()?: 0)
     }
-    println("\n" + """
-        Selecciones una de las siguientes opciones
-        ------------------------------------------
-        1) Ordenar de mayor a menor
-        2) Ordenar de menor a mayor
-        ------------------------------------------
-    """.trimIndent())
-    print("Seleccione una opcion: ")
-    opt = readLine()!!.toInt()
-    when(opt) {
-        1 -> ordenarMayor(listNum, cant)
-        2 -> ordenarMenor(listNum, cant)
-        else -> "Opcion no valida!!"
-    }
+    println(lista)
+    println(menorMayor(lista,cant))
+    println(mayorMenor(lista,cant))
 }
